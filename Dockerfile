@@ -1,10 +1,20 @@
-FROM jlesage/baseimage-gui:alpine-3.7
+FROM jlesage/baseimage-gui:ubuntu-16.04
 
-ENV APP_NAME="iDRAC"
+ENV APP_NAME="iDRAC 5" \
+    IDRAC_PORT=443
 
-RUN apk add --no-cache curl
-RUN apk add --no-cache wget
-RUN apk add --no-cache openjdk7-jre
+COPY keycode-hack.c /keycode-hack.c
+
+RUN apt-get update && \
+    apt-get install -y wget software-properties-common && \
+    add-apt-repository ppa:openjdk-r/ppa && \
+    apt-get update && \
+    apt-get install -y openjdk-7-jdk gcc && \
+    gcc -o /keycode-hack.so /keycode-hack.c -shared -s -ldl -fPIC && \
+    apt-get remove -y gcc software-properties-common && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm /keycode-hack.c
 
 RUN mkdir /app && \
     chown ${USER_ID}:${GROUP_ID} /app
