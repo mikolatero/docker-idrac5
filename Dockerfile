@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y wget software-properties-common && \
     add-apt-repository ppa:openjdk-r/ppa && \
     apt-get update && \
-    apt-get install -y openjdk-7-jdk gcc && \
+    apt-get install -y openjdk-8-jdk gcc curl && \
     gcc -o /keycode-hack.so /keycode-hack.c -shared -s -ldl -fPIC && \
     apt-get remove -y gcc software-properties-common && \
     apt-get autoremove -y && \
