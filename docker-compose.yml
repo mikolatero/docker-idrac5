@@ -11,6 +11,8 @@ services:
       - IDRAC_HOST=idrac1.example.org
       - IDRAC_USER=root
       - IDRAC_PASSWORD=1234
+    volumes:
+      - /opt/isos:/isos
   idrac2:
     image: mikolatero/idrac5
     restart: always
@@ -21,3 +23,5 @@ services:
       - IDRAC_HOST=idrac2.example.org
       - IDRAC_USER=root
       - IDRAC_PASSWORD=1234
+    volumes:
+      - /opt/isos:/isos
