@@ -16,7 +16,7 @@ Container is based on [docker-idrac6](https://github.com/DomiStyle/docker-idrac6
 
 See the docker-compose [here](https://github.com/ncerny/docker-idrac/blob/master/docker-compose.yml) or use this command:
 
-    IDRAC_HOST=idrac1.example.org docker run -d -p 5800:5800 -p 5900:5900 -e IDRAC_HOST=${IDRAC_HOST} -e IDRAC_USER=root -e IDRAC_PASSWORD=1234 -e APP_NAME=${IDRAC_HOST} -n ${IDRAC_HOST} ncerny/idrac
+    IDRAC_HOST=idrac1.example.org docker run -d -p 5800:5800 -p 5900:5900 -e IDRAC_HOST=${IDRAC_HOST} -e IDRAC_USER=root -e IDRAC_PASSWORD=1234 -e APP_NAME=${IDRAC_HOST} -n ${IDRAC_HOST} docker pull mikolatero/idrac5
 
 The web interface will be available on port 5800 while the VNC server can be accessed on 5900. Startup might take a few seconds while the Java libraries are downloaded. You can add a volume on /app if you would like to cache them.
 
